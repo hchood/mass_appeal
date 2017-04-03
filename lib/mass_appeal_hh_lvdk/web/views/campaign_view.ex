@@ -1,14 +1,16 @@
 defmodule MassAppealHhLvdk.Web.CampaignView do
   use MassAppealHhLvdk.Web, :view
 
+  alias MassAppealHhLvdk.Web.CampaignView
+
   def render("index.json", %{campaigns: campaigns}) do
-    %{
-      campaigns: Enum.map(campaigns, &campaign_json/1)
-    }
+    %{data: render_many(campaigns, CampaignView, "campaign.json")}
   end
 
-  # TODO return only certain attributes
-  def campaign_json(campaign) do
-    campaign
+  def render("campaign.json", %{campaign: campaign}) do
+  %{id: campaign.id,
+    name: campaign.name,
+    description: campaign.description,
+    total_funding_needed: campaign.total_funding_needed}
   end
 end
