@@ -5,7 +5,8 @@ defmodule MassAppealHhLvdk.Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", MassAppealHhLvdk.Web do
+  scope "/v1", MassAppealHhLvdk.Web do
     pipe_through :api
+    resources "/campaigns", CampaignController, only: [:index]
   end
 end
