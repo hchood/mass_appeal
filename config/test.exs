@@ -12,8 +12,6 @@ config :logger, level: :warn
 # Configure your database
 config :mass_appeal_hh_lvdk, MassAppealHhLvdk.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "mass_appeal_hh_lvdk_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
