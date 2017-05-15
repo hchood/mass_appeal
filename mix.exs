@@ -33,7 +33,8 @@ defmodule MassAppealHhLvdk.Mixfile do
      {:phoenix_ecto, "~> 3.2"},
      {:postgrex, ">= 0.0.0"},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:timex, "~> 3.0"},]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

@@ -8,9 +8,17 @@ defmodule MassAppealHhLvdk.Web.CampaignView do
   end
 
   def render("show.json", %{campaign: campaign}) do
-  %{id: campaign.id,
-    name: campaign.name,
-    description: campaign.description,
-    total_funding_needed: campaign.total_funding_needed}
+  %{
+    data: %{
+      id: campaign.id,
+      user_id: campaign.user_id,
+      name: campaign.name,
+      description: campaign.description,
+      total_funding_needed: campaign.total_funding_needed,
+      canceled_at: Timex.format!(campaign.canceled_at, "%FT%T%:z", :strftime),
+      completed_at: Timex.format!(campaign.completed_at, "%FT%T%:z", :strftime),
+      due_at: Timex.format!(campaign.due_at, "%FT%T%:z", :strftime),
+    }
+  }
   end
 end
