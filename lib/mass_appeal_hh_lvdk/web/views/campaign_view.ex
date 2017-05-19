@@ -4,7 +4,7 @@ defmodule MassAppealHhLvdk.Web.CampaignView do
   alias MassAppealHhLvdk.Web.CampaignView
 
   def render("index.json", %{campaigns: campaigns}) do
-    %{data: render_many(campaigns, CampaignView, "campaign.json")}
+    %{data: render_many(campaigns, CampaignView, "show.json")}
   end
 
   def render("show.json", %{campaign: campaign}) do
