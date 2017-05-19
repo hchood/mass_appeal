@@ -6,7 +6,7 @@ defmodule MassAppealHhLvdk.Funding do
   import Ecto.{Query, Changeset}, warn: false
   alias MassAppealHhLvdk.Repo
 
-  alias MassAppealHhLvdk.Funding.Campaign
+  alias MassAppealHhLvdk.Funding.{Campaign, Pledge}
 
   @doc """
   Returns the list of campaigns.
@@ -106,5 +106,20 @@ defmodule MassAppealHhLvdk.Funding do
     campaign
     |> cast(attrs, [:name, :description, :total_funding_needed, :user_id, :due_at, :canceled_at, :completed_at])
     |> validate_required([:name, :description, :total_funding_needed])
+  end
+
+  @doc """
+  Creates a pledge.
+  """
+  def create_pledge(attrs \\ %{}) do
+    %Pledge{}
+    |> pledge_changeset(attrs)
+    |> Repo.insert()
+  end
+
+  defp pledge_changeset(%Pledge{} = pledge, attrs) do
+    pledge
+    |> cast(attrs, [:user_id, :campaign_id, :amount_cents])
+    |> validate_required([:user_id, :campaign_id, :amount_cents])
   end
 end
